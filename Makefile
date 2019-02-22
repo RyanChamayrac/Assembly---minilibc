@@ -7,15 +7,33 @@
 
 NAME=		libasm.so
 
-all:
-		nasm -f elf64 strlen.asm
-		nasm -f elf64 strchr.asm
-		gcc -shared -o $(NAME) *.o
+SRC=        strlen.s  \
+            strchr.s
+
+ASMFLAGS=   -f elf64
+
+LDFLAGS=    -shared
+
+ASM=        nasm
+
+LD=         ld
+
+RM=         rm -f
+
+OBJ=        $(SRC:.s=.o)
+
+%.o: %.s
+			$(ASM) -o $@ $< $(ASMFLAGS)
+
+all:        $(NAME)
+
+$(NAME):    $(OBJ)
+			$(LD) $(LDFLAGS) -o $(NAME) $(OBJ)
 
 clean:
-			rm -f *.o
+			$(RM) $(OBJ)
 
 fclean:		clean
-			rm -f $(NAME)
+			$(RM) $(NAME)
 
 re:		fclean all
