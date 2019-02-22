@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL asm_strlen:function
+GLOBAL strlen:function
 
-asm_strlen:
+strlen:
     PUSH    rbp
     MOV     rbp, rsp
     XOR     rax, rax
