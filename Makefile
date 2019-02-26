@@ -11,7 +11,8 @@ SRC=        strlen.s    \
             strchr.s    \
             rindex.s    \
             strpbrk.s   \
-            strcspn.s
+            strcspn.s   \
+            strstr.s
 
 ASMFLAGS=   -f elf64
 
