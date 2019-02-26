@@ -10,7 +10,8 @@ NAME=		libasm.so
 SRC=        strlen.s    \
             strchr.s    \
             rindex.s    \
-            strpbrk.s
+            strpbrk.s   \
+            strcspn.s
 
 ASMFLAGS=   -f elf64
 
