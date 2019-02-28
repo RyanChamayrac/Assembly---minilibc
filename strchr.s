@@ -2,7 +2,7 @@ BITS 64
 
 SECTION .text
 
-GLOBAL strchr:function
+GLOBAL strchr
 
 strchr:
     PUSH    rbp

@@ -2,7 +2,7 @@ BITS 64
 
 SECTION .text
 
-GLOBAL strlen:function
+GLOBAL strlen
 
 strlen:
     PUSH    rbp

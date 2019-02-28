@@ -2,7 +2,7 @@ BITS 64
 
 SECTION .text
 
-GLOBAL strcspn:function
+GLOBAL strcspn
 
 strcspn:
     PUSH    rbp

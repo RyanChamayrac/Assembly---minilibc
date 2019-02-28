@@ -2,7 +2,7 @@ BITS 64
 
 SECTION .text
 
-GLOBAL memcpy:function
+GLOBAL memcpy
 
 memcpy:
     PUSH    rbp
