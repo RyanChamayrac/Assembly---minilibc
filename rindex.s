@@ -21,7 +21,7 @@ find:
 	je      return
 	cmp     BYTE[rdi], sil
 	je      getvalue
-	jmp     loop
+	jmp     find
 
 getvalue:
     mov     rax, rdi
