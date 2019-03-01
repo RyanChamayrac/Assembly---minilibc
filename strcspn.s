@@ -12,21 +12,20 @@ strcspn:
 loop:
     cmp     BYTE[rdi], 0
     je      return
-    cmp     BYTE[rdi], sil
-    jmp     compare
     inc     rdi
-    inc     rsi
-    jmp     loop
+    jmp     compare
 
 compare:
-	cmp     BYTE[rsi], 0
-	je      incvalue
-	cmp     BYTE[rdi], sil
+	mov     r10b, [rsi + rcx]
+	cmp     r10b, 0
+	je      reset
+	cmp     r10b, BYTE[rdi]
 	je      loop
-	inc     rsi
+	inc     rcx
 	jmp     compare
 
-incvalue:
+reset:
+	XOR     rcx, rcx
 	inc     rax
 	jmp     loop
 
