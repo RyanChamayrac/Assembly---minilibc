@@ -12,19 +12,21 @@ strpbrk:
 loop:
     cmp     BYTE[rdi], 0
     je      return
-    cmp     BYTE[rdi], sil
-    jmp     compare
     inc     rdi
-    inc     rsi
-    jmp     loop
+    jmp     compare
 
 compare:
-	cmp     BYTE[rsi], 0
-	je      loop
-	cmp     BYTE[rdi], sil
+	mov     r10b, [rsi + rcx]
+	cmp     r10b, 0
+	je      reset
+	cmp     r10b, BYTE[rdi]
 	je      getvalue
-	inc     rsi
+	inc     rcx
 	jmp     compare
+
+reset:
+	XOR     rcx, rcx
+	jmp     loop
 
 getvalue:
     mov     rax, rdi
