@@ -12,17 +12,15 @@ rindex:
 loop:
     cmp     BYTE[rdi], 0
     je      find
-    cmp     BYTE[rdi], sil
-    je      getvalue
     inc     rdi
     jmp     loop
 
 find:
+	dec     rdi
 	cmp     BYTE[rdi], 0
 	je      return
 	cmp     BYTE[rdi], sil
 	je      getvalue
-	dec     rdi
 	jmp     loop
 
 getvalue:
