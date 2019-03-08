@@ -11,7 +11,7 @@ strstr:
 
 loop:
     cmp     BYTE[rdi], 0
-    je      return
+    je      case
     cmp     BYTE[rsi], 0
     je      getvalue
     jmp     compare
@@ -34,6 +34,11 @@ inc:
 getvalue:
     mov     rax, rdi
     jmp     return
+
+case:
+	cmp     BYTE[rsi], 0
+	je      getvalue
+	jmp     return
 
 reset:
 	XOR     rcx, rcx
