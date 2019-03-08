@@ -2,9 +2,9 @@ BITS 64
 
 SECTION .text
 
-GLOBAL memcpy
+GLOBAL memmove
 
-memcpy:
+memmove:
     PUSH    rbp
     MOV     rbp, rsp
     XOR     rcx, rcx
