@@ -13,7 +13,7 @@ loop:
     cmp     BYTE[rdi], 0
     je      return
     cmp     BYTE[rsi], 0
-    je      return
+    je      getvalue
     jmp     compare
 
 compare:
