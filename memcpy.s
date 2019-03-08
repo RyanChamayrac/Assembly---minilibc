@@ -2,20 +2,26 @@ BITS 64
 
 SECTION .text
 
-GLOBAL memcpy
+GLOBAL test_memcpy
 
-memcpy:
+test_memcpy:
     PUSH    rbp
     MOV     rbp, rsp
-    XOR     rax, rax
+    XOR     rcx, rcx
 
 loop:
-	cmp     BYTE[rdx], 0
-	je      return
-    mov     dil, sil
-    jmp     return
+    cmp     BYTE[rsi + rcx], 0
+    je      return
+    cmp     rdx, 0
+    je      return
+    mov     r8b, BYTE[rsi + rcx]
+    mov     BYTE[rdi + rcx], r8b
+    inc     rcx
+    dec     rdx
+    jmp     loop
 
 return:
+	mov     rax, rdi
     mov     rsp, rbp
     pop     rbp
     ret
