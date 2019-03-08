@@ -12,28 +12,33 @@ strstr:
 loop:
     cmp     BYTE[rdi], 0
     je      return
-    cmp     BYTE[rdi], sil
-    je      comparestr
-    inc     rdi
-    jmp     loop
+    cmp     BYTE[rsi], 0
+    je      return
+    jmp     compare
 
-comparestr:
-	cmp     BYTE[rdi], 0
-	je      returnvalue
-	cmp     BYTE[rsi], 0
-	je      returnvalue
-	cmp     BYTE[rdi], sil
+compare:
+	mov     r11b, [rdi + rcx]
+	cmp     r11b, 0
+	je      return
+	mov     r10b, [rsi + rcx]
+	cmp     r10b, 0
+	je      getvalue
+	cmp     r10b, r11b
 	je      inc
-	jne     loop
+	jmp     reset
 
 inc:
-	inc     rdi
-	inc     rsi
-	jmp     comparestr
+	inc     rcx
+	jmp     compare
 
-returnvalue:
-	mov     rax, rsi
-	jmp     return
+getvalue:
+    mov     rax, rdi
+    jmp     return
+
+reset:
+	XOR     rcx, rcx
+	inc     rdi
+	jmp     loop
 
 return:
     mov     rsp, rbp
