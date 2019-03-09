@@ -7,16 +7,15 @@ GLOBAL memcpy
 memcpy:
     PUSH    rbp
     MOV     rbp, rsp
-    XOR     rcx, rcx
+    MOV     rax, rdi
 
 loop:
-    cmp     BYTE[rsi + rcx], 0
-    je      return
     cmp     rdx, 0
     je      return
-    mov     r8b, BYTE[rsi + rcx]
-    mov     BYTE[rdi + rcx], r8b
-    inc     rcx
+    mov     r8b, BYTE[rsi]
+    mov     BYTE[rdi], r8b
+    inc     rdi
+    inc     rsi
     dec     rdx
     jmp     loop
 
