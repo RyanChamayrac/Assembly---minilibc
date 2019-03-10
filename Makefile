@@ -13,7 +13,12 @@ SRC=        strlen.s    \
             strpbrk.s   \
             strcspn.s   \
             strstr.s    \
-            memcpy.s
+            memcpy.s    \
+            memmove.s   \
+            memset.s    \
+            strcmp.s    \
+            strncmp.s   \
+            strcasecmp.s
 
 ASMFLAGS=   -f elf64
 
