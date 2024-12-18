@@ -2,7 +2,6 @@
 
 Here is a second year project in assembly. It consists of a library of simple C functions in assembly.
 
-The maps are located in the folder "maps" or the solutions in the folder "maps_solved"
 # Build
 
 First you have to get nasm in order to compile assembly files
